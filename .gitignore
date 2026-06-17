@@ -1,0 +1,24 @@
+# Ambiente
+.env
+
+# Banco de dados
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Ambiente virtual
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Django
+*.mo
+*.po
