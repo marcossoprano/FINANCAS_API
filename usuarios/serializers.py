@@ -43,7 +43,7 @@ class UsuarioRegisterSerializer(serializers.ModelSerializer):
         return usuario
 
 
-class UsuarioPerfillSerializer(serializers.ModelSerializer):
+class UsuarioPerfilSerializer(serializers.ModelSerializer):
     """
     Serializer para consultar o perfil do usuário.
     """

@@ -8,7 +8,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Usuario
 from .serializers import (
     UsuarioRegisterSerializer,
-    UsuarioPerfillSerializer,
+    UsuarioPerfilSerializer,
     UsuarioUpdateSerializer,
     UsuarioChangePasswordSerializer,
     UsuarioLoginSerializer
@@ -33,7 +33,7 @@ class UsuarioViewSet(viewsets.ViewSet):
             refresh = RefreshToken.for_user(usuario)
             return Response({
                 'message': 'Usuário cadastrado com sucesso',
-                'usuario': UsuarioPerfillSerializer(usuario).data,
+            'usuario': UsuarioPerfilSerializer(usuario).data,
                 'access': str(refresh.access_token),
                 'refresh': str(refresh)
             }, status=status.HTTP_201_CREATED)
@@ -55,7 +55,7 @@ class UsuarioViewSet(viewsets.ViewSet):
                 refresh = RefreshToken.for_user(usuario)
                 return Response({
                     'message': 'Login realizado com sucesso',
-                    'usuario': UsuarioPerfillSerializer(usuario).data,
+                    'usuario': UsuarioPerfilSerializer(usuario).data,
                     'access': str(refresh.access_token),
                     'refresh': str(refresh)
                 }, status=status.HTTP_200_OK)
@@ -75,7 +75,7 @@ class UsuarioViewSet(viewsets.ViewSet):
         usuario = request.user
 
         if request.method == 'GET':
-            serializer = UsuarioPerfillSerializer(usuario)
+            serializer = UsuarioPerfilSerializer(usuario)
             return Response(serializer.data)
 
         elif request.method == 'PATCH':
@@ -84,7 +84,7 @@ class UsuarioViewSet(viewsets.ViewSet):
                 serializer.save()
                 return Response({
                     'message': 'Perfil atualizado com sucesso',
-                    'usuario': UsuarioPerfillSerializer(usuario).data
+                    'usuario': UsuarioPerfilSerializer(usuario).data
                 }, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
